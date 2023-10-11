@@ -1,4 +1,4 @@
-# TP_ApiRestSinPaginacion
+# Parcial
 
 * Nombre: Bruno Montero
 * Legajo: 45376

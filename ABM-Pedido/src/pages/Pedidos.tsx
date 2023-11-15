@@ -1,6 +1,7 @@
 import PedidoTable from "../components/PedidoTable/PedidoTable";
 
 
+
 export const Pedido = () => {
   return (
     <>

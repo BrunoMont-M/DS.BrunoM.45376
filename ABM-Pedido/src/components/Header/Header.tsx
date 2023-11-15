@@ -16,7 +16,7 @@ export const Header = () => {
                             <Nav.Link onClick={() => navigate ('/')}>Home</Nav.Link>
                             <Nav.Link onClick={() => navigate ('/componentes')}>Componentes</Nav.Link>
                             <Nav.Link onClick={()=> navigate('/administracion')}>Administracion</Nav.Link>
-                            <Nav.Link onClick={()=>navigate('/pedido')}>Pedido</Nav.Link>
+                            <Nav.Link onClick={()=>navigate('/pedidos')}>Pedido</Nav.Link>
                             
                         </Nav>
                         <Form className="d-flex">

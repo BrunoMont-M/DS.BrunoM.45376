@@ -12,7 +12,7 @@ import PedidoModal from "../PedidoModal/PedidoModal";
 const PedidoTable = () => {
 
     //Variable que va a contener los datos recibidos por la API
-    const [Pedidos, setPedidos] = useState<Pedido[]>([]);
+    const [pedidos, setPedidos] = useState<Pedido[]>([]);
 
     //Variable que muestra el componente Loader hasta que se reciban los datos de la API
     const [isLoading, setIsLoading] = useState(true);
@@ -34,7 +34,7 @@ const PedidoTable = () => {
     }, [refreshData]);
 
     //Test, este log esta modificado para que muestre los datos de una manera mas legible
-    console.log(JSON.stringify(Pedidos, null, 2));
+    console.log(JSON.stringify(pedidos, null, 2));
     
     const initializableNewPedido = (): Pedido =>{
         return{
@@ -52,16 +52,16 @@ const PedidoTable = () => {
         };
     };
 
-    const [pedidos, setPedidos] = useState<Pedido>(initializableNewPedido);
+    const [pedido, setPedido] = useState<Pedido>(initializableNewPedido);
 
     const[showModal, setShowModal]= useState(false);
     const[modalType, setModalType]= useState<ModalType>(ModalType.NONE);
     const[title, setTitle]= useState("");
 
-    const handleClick= (newTitle: string, pedidos: Pedido, modal:ModalType)=> {
+    const handleClick= (newTitle: string, ped: Pedido, modal:ModalType)=> {
         setTitle(newTitle);
         setModalType(modal);
-        setPedidos(pedidos);
+        setPedido(ped);
         setShowModal(true);
       };
 
@@ -73,7 +73,6 @@ const PedidoTable = () => {
             <Table hover>
               <thead>
                 <tr>
-                  <th>Id</th>
                   <th>Total</th>
                   <th>Total Costo</th>
                   <th>Estado</th>
@@ -89,20 +88,20 @@ const PedidoTable = () => {
                 </tr>
               </thead>
               <tbody>
-                {pedidos.map(pedidos =>(
-                  <tr key={pedidos.id}>
-                    <td>{pedidos.total}</td>
-                    <td>{pedidos.totalCosto}</td>
-                    <td>{pedidos.estado}</td>
-                    <td>{pedidos.tipoEnvio}</td>
-                    <td>{pedidos.formaPago}</td>
-                    <td>{pedidos.horaEstimadaFinalizacion}</td>
-                    <td>{pedidos.fechaAlta}</td>
-                    <td>{pedidos.fechaModificacion}</td>
-                    <td>{pedidos.fechaBaja}</td>
-                    <td>{pedidos.fechaPedido}</td>
-                    <td><EditButton onClick={() => handleClick("Editar Pedido", pedidos, ModalType.UPDATE)}/></td>
-                    <td><DeleteButton onClick={() => handleClick("Borrar Pedido", pedidos, ModalType.DELETE)}/></td>
+                {pedidos.map(pedido =>(
+                  <tr key={pedido.id}>
+                    <td>{pedido.total}</td>
+                    <td>{pedido.totalCosto}</td>
+                    <td>{pedido.estado}</td>
+                    <td>{pedido.tipoEnvio}</td>
+                    <td>{pedido.formaPago}</td>
+                    <td>{pedido.horaEstimadaFinalizacion}</td>
+                    <td>{pedido.fechaAlta}</td>
+                    <td>{pedido.fechaModificacion}</td>
+                    <td>{pedido.fechaBaja}</td>
+                    <td>{pedido.fechaPedido}</td>
+                    <td><EditButton onClick={() => handleClick("Editar Pedido", pedido, ModalType.UPDATE)}/></td>
+                    <td><DeleteButton onClick={() => handleClick("Borrar Pedido", pedido, ModalType.DELETE)}/></td>
                   </tr>
                 ))}
               </tbody>
@@ -115,7 +114,7 @@ const PedidoTable = () => {
             onHide={()=> setShowModal(false)}
             title={title}
             modalType={modalType}
-            ped={pedidos}
+            ped={pedido}
             refreshData={setRefreshData}
             />
           )}

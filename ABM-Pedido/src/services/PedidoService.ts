@@ -1,6 +1,6 @@
 import { Pedido } from "../types/Pedido";
 
-const BASE_URL = 'https://example-service-thrid.onrender.com/';
+const BASE_URL = 'https://example-service-thrid.onrender.com';
 
 export const PedidoService = {
 	
